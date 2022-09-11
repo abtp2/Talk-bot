@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta charset="UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"/>
+				<link rel="stylesheet" href="style.css">
+				<title>Page title</title>
+</head>
+<body>
+
+<section>
+	<div id="time"></div>
+	<div id="taareek"></div>
+	<div id="mahina"></div>
+	<div id="saal"></div>
+<button id="speak" onclick="get()">Speak</button>	 
+<div class="container">
+<div class="texts"></div>
+</div>
+</section>
+
+
+
+<div id="main-div">
+	<div class="row">
+			<div id="first"><img src="robot.gif"></div>
+			<div id="second">
+			 <h1>Hi! I am Boron</h1>	
+			 <p>I am actually a example of an A.I. You can simply talk with me like a human. Also you can give me commands. Try it for free.</p>
+			 <a href="">Developer</a>
+			</div>
+	</div>
+	
+<footer>
+<p>Made with ❤ by Ashutosh Pandey.</p>
+</footer>
+</div>
+
+ 
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+<script>	
+const time = document.querySelector("#time");
+setInterval(()=>{
+let date = new Date(); 
+let hours = date.getHours(); 
+let minutes = date.getMinutes(); 
+let seconds = date.getSeconds(); 
+let day_night = "AM"; 
+
+var dd = String(date.getDate()).padStart(2, '0'); 
+var mm = String(date.getMonth() + 1).padStart(2, '0'); 
+var yyyy = date.getFullYear();
+taareek = dd; 
+mahina = mm;
+saal = yyyy;
+
+
+if(hours > 12){ 
+day_night = "PM"; hours = hours - 12; 
+} 
+if(seconds < 10){
+seconds = "0" + seconds; 
+} 
+if(minutes < 10){ 
+minutes = "0" + minutes; 
+} 
+if(hours < 10){ 
+hours = "0" + hours; 
+} 
+time.textContent = hours + ":" + minutes +
+day_night; 
+
+
+document.getElementById("taareek").innerText =taareek.replace("0", " ");
+document.getElementById("mahina").innerText =mahina.replace("0", " ");
+document.getElementById("saal").innerText =saal;
+}); 
+
+
+
+
+
+
+const utterance = new SpeechSynthesisUtterance();
+															
+const texts = document.querySelector(".texts");
+const nut =document.getElementById("speak");
+utterance.rate = 0.9;
+utterance.volume = 1;
+utterance.pitch = 0.5;
+utterance.lang = "en-IN"; 		
+	
+function get(){
+window.speechSynthesis.speak(utterance);				
+}
+
+
+
+window.SpeechRecognition =
+  window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+
+let p = document.createElement("p");
+
+recognition.addEventListener("result", (e) => {
+  texts.appendChild(p);
+  const text = Array.from(e.results)
+    .map((result) => result[0])
+    .map((result) => result.transcript)
+    .join("");
+
+  p.innerText = text;
+  const pho = /^[0-9()+\-*.\/\s]*$/gm;
+  const phoneResult = pho.test(text);
+  if (e.results[0].isFinal) {
+   if (text.indexOf('hello') > -1 ||
+      text.indexOf('Hello') > -1
+    ) {
+       					
+      utterance.text = "hi everyone.";    
+      nut.click();}
+    
+  
+  
+    if (text.indexOf('is your name') > -1 ||
+      text.indexOf('your name') > -1
+    ) {
+       					
+      utterance.text = "My name is jarvis. my developer Ashutosh has given me this name.";
+      nut.click();}    
+      
+      
+      
+      if (text.indexOf('about you') > -1 ||
+      text.indexOf('yourself') > -1
+    ) {
+       					
+      utterance.text = "My name is jarvis. my developer Ashutosh has given me this name.I am a robot,i can walk and talk. You can ask me to tell you time,whether,date etcetera.";
+      nut.click();}    
+      
+      
+      
+      if (text.indexOf('who are you') > -1 ||
+      text.indexOf('what are you') > -1
+    ) {
+       					
+      utterance.text = "My name is jarvis. my developer Ashutosh has given me this name.I am a robot,i can walk and talk. You can ask me to tell you time,whether,date etcetera.";
+      nut.click();}   
+      
+      
+      
+      if (text.indexOf('you do') > -1 ||
+      text.indexOf('what can you do') > -1
+    ) {
+       					
+      utterance.text = "I can talk with you like a friend. I can tell you time,date,weather etcetera.";
+      nut.click();}     
+      
+            
+               
+          
+       if (text.indexOf('how are you') > -1 ||
+      text.indexOf('are you fine') > -1
+    ) {
+       
+      utterance.text = "I am fine.";
+      nut.click();}    
+    
+    
+    
+    if (text.indexOf('Ashutosh') > -1 ||
+      text.indexOf('ashutosh') > -1
+    ) {
+       
+      utterance.text = "He is my developer. He is expert making the robots like me.";
+      nut.click();}
+      
+      if (text.indexOf('dhruv') > -1 ||
+      text.indexOf('Dhru') > -1
+    ) {
+       
+      utterance.text = "He is my developer. He is very good in study.";
+      nut.click();}
+      
+    
+    
+    
+    if (text.indexOf('made') > -1) {
+       
+      utterance.text = "I am made bye Ashutosh and dhruv. They are my software and mechanical developers.";
+      nut.click();}
+    
+    
+    
+    
+    if (text.indexOf('your developer') > -1 ||
+      text.indexOf('your developers') > -1
+    )  {
+       
+      utterance.text = "Ashutosh and dhruv. They are my software and mechanical developers.";
+      nut.click();}
+      
+      
+      
+    if (text.indexOf('ratan') > -1) {
+       
+      utterance.text = "my developers has tell me about him. he is the principal of this school and a very best teacher";
+      nut.click();}
+      
+      
+      
+     if (text.indexOf('principal') > -1 ||
+      text.indexOf('principle') > -1
+    ) {
+       
+      utterance.text = "Mister ratan singh mehra. He is the principal of this school and a very best teacher";
+      nut.click();}
+      
+      
+      if (text.indexOf('director') > -1 ||
+      text.indexOf('manager') > -1
+    ) {
+       
+      utterance.text = "Mister jagat singh chaudhary. He is the managing director of this school and a very good person";
+      nut.click();}
+      
+            
+      
+      if (text.indexOf('play music') > -1 ||
+      text.indexOf('Play music') > -1
+    ) {
+       
+      utterance.text = "Ok.Playing music";
+      nut.click();
+     document.getElementById("audio").play();
+      }
+      
+      if (text.indexOf('pause music') > -1 ||
+      text.indexOf('stop music') > -1
+    ) {
+       
+      utterance.text = "Ok.Playing music";
+      nut.click();
+     document.getElementById("audio").pause();
+      }
+      
+            
+      
+      if (text.indexOf('left') > -1 ||
+      text.indexOf('see left') > -1
+    ) {
+                  document.getElementById("eye-div-in").style.top ="37%";
+document.getElementById("eye-div-in").style.transform ="translate(-50%,-50%)";
+document.getElementById("eye-div-in2").style.top ="37%";
+document.getElementById("eye-div-in2").style.transform ="translate(-50%,-50%)";}
+
+
+
+
+  if (text.indexOf('right') > -1 ||
+      text.indexOf('write') > -1
+    ) {
+                  document.getElementById("eye-div-in").style.top ="62%";
+document.getElementById("eye-div-in").style.transform ="translate(-50%,-50%)";
+document.getElementById("eye-div-in2").style.top ="62%";
+document.getElementById("eye-div-in2").style.transform ="translate(-50%,-50%)";}
+
+
+
+
+if (text.indexOf('centre') > -1 ||
+      text.indexOf('middle') > -1
+    ) {
+                  document.getElementById("eye-div-in").style.top ="50%";
+document.getElementById("eye-div-in").style.transform ="translate(-50%,-50%)";
+document.getElementById("eye-div-in2").style.top ="50%";
+document.getElementById("eye-div-in2").style.transform ="translate(-50%,-50%)";}
+
+if (text.indexOf('center') > -1) {
+               document.getElementById("eye-div-in").style.top ="50%";
+document.getElementById("eye-div-in").style.transform ="translate(-50%,-50%)";
+document.getElementById("eye-div-in2").style.top ="50%";
+document.getElementById("eye-div-in2").style.transform ="translate(-50%,-50%)";}
+
+
+
+if (text.indexOf('time') > -1)  {
+       
+      utterance.text = time.textContent;
+      nut.click();}
+
+
+if (text.indexOf('date') > -1 ||
+      text.indexOf('Date') > -1
+    ) {
+       
+      utterance.text = document.getElementById("taareek").innerText;
+      nut.click();}
+      
+      
+if (text.indexOf('month') > -1 ||
+      text.indexOf('Month') > -1
+    ) {
+       
+      utterance.text = document.getElementById("mahina").innerText;
+      nut.click();}
+      
+      
+if (text.indexOf('year') > -1 ||
+      text.indexOf('Year') > -1
+    ) {
+       
+      utterance.text = document.getElementById("saal").innerText;
+      nut.click();}
+      
+if (text.indexOf('weather') > -1 ||
+      text.indexOf('Weather') > -1
+    ) {
+       
+      utterance.text = "26 degree Celsius";
+      nut.click();}
+      
+if (text.indexOf('whether') > -1 ||
+      text.indexOf('Whether') > -1
+    ) {
+       
+      utterance.text = "26 degree Celsius";
+      nut.click();}
+      
+     
+     
+if (text.indexOf('repeat') > -1 ||
+      text.indexOf('Repeat') > -1
+    ) {
+      nut.click();}
+
+
+
+
+if(phoneResult == true){
+const evo =eval(text);	
+ 
+utterance.text = evo;
+nut.click();
+}
+
+
+      
+      
+      
+   if (text.indexOf('bye') > -1) {
+       
+      utterance.text = "ok. please come back later to meet me.";
+      nut.click();}
+    p = document.createElement("p");
+  }
+});
+
+recognition.addEventListener("end", () => {
+  recognition.start();
+});
+
+recognition.start();
+</script>
+</body>
+</html>
