@@ -7,8 +7,6 @@ document.getElementById("form-div").style.display ="none";
 else{
 document.getElementById("form-div").style.display ="flex";				
 }		
-
-document.getElementsByTagName("footer")[0].onclick = nut.click();
 }
 
 
