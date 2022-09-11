@@ -4,7 +4,7 @@
 				<meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"/>
 				<link rel="stylesheet" href="style.css">
-				<title>Page title</title>
+				<title>Boron A.I.</title>
 </head>
 <body>
 
@@ -18,6 +18,27 @@
 <div class="texts"></div>
 </div>
 </section>
+
+
+
+
+<!-- form div -->
+<div id="form-div">
+<form>
+<h1>Boron A.I.</h1>
+<input type="text" placeholder="Write your name here....." id="uname" required>
+<input type="email" placeholder="Write your email here (optional)....." id="uemail">
+<input type="text" placeholder="Write your qualifications (optional)....." id="uqual">
+
+<div>
+<input type="reset">
+<input type="submit" value="Done">
+</div>
+</form>
+</div>
+
+
+
 
 
 
@@ -47,8 +68,13 @@
 
 
 
-
+<script src="script.js"></script>
 <script>	
+const unaame = localStorage.getItem("name");
+const uemaail = localStorage.getItem("email");
+const uquaal = localStorage.getItem("qual");
+
+
 const time = document.querySelector("#time");
 setInterval(()=>{
 let date = new Date(); 
@@ -129,16 +155,41 @@ recognition.addEventListener("result", (e) => {
       text.indexOf('Hello') > -1
     ) {
        					
-      utterance.text = "hi everyone.";    
+      utterance.text = "hi" + unaame;    
       nut.click();}
     
-  
+    
+    
+  if (text.indexOf('my name') > -1 ||
+      text.indexOf('My name') > -1
+    ) {
+       					
+      utterance.text = "Your name is" + unaame;    
+      nut.click();}
+      
+      
+   if (text.indexOf('my email') > -1 ||
+      text.indexOf('My email') > -1
+    ) {
+       					
+      utterance.text = "Your email is" + uemaail;    
+      nut.click();}
+      
+   
+   if (text.indexOf('my qualification') > -1 ||
+      text.indexOf('My qualification') > -1
+    ) {
+       					
+      utterance.text = "Your qualification is" + uquaal;    
+      nut.click();}
+      
+      
   
     if (text.indexOf('is your name') > -1 ||
       text.indexOf('your name') > -1
     ) {
        					
-      utterance.text = "My name is jarvis. my developer Ashutosh has given me this name.";
+      utterance.text = "My name is boron. my developer Ashutosh has given me this name.";
       nut.click();}    
       
       
@@ -147,7 +198,7 @@ recognition.addEventListener("result", (e) => {
       text.indexOf('yourself') > -1
     ) {
        					
-      utterance.text = "My name is jarvis. my developer Ashutosh has given me this name.I am a robot,i can walk and talk. You can ask me to tell you time,whether,date etcetera.";
+      utterance.text = "My name is boron. my developer Ashutosh has given me this name.I am a robot,i can talk with you like a human. You can ask me to tell you time,whether,date etcetera.";
       nut.click();}    
       
       
@@ -156,7 +207,7 @@ recognition.addEventListener("result", (e) => {
       text.indexOf('what are you') > -1
     ) {
        					
-      utterance.text = "My name is jarvis. my developer Ashutosh has given me this name.I am a robot,i can walk and talk. You can ask me to tell you time,whether,date etcetera.";
+      utterance.text = "My name is boron. my developer Ashutosh has given me this name.I am a robot,i can talk with you like a human. You can ask me to tell you time,whether,date etcetera.";
       nut.click();}   
       
       
@@ -236,65 +287,9 @@ recognition.addEventListener("result", (e) => {
       utterance.text = "Mister jagat singh chaudhary. He is the managing director of this school and a very good person";
       nut.click();}
       
-            
-      
-      if (text.indexOf('play music') > -1 ||
-      text.indexOf('Play music') > -1
-    ) {
-       
-      utterance.text = "Ok.Playing music";
-      nut.click();
-     document.getElementById("audio").play();
-      }
-      
-      if (text.indexOf('pause music') > -1 ||
-      text.indexOf('stop music') > -1
-    ) {
-       
-      utterance.text = "Ok.Playing music";
-      nut.click();
-     document.getElementById("audio").pause();
-      }
-      
-            
-      
-      if (text.indexOf('left') > -1 ||
-      text.indexOf('see left') > -1
-    ) {
-                  document.getElementById("eye-div-in").style.top ="37%";
-document.getElementById("eye-div-in").style.transform ="translate(-50%,-50%)";
-document.getElementById("eye-div-in2").style.top ="37%";
-document.getElementById("eye-div-in2").style.transform ="translate(-50%,-50%)";}
-
-
-
-
-  if (text.indexOf('right') > -1 ||
-      text.indexOf('write') > -1
-    ) {
-                  document.getElementById("eye-div-in").style.top ="62%";
-document.getElementById("eye-div-in").style.transform ="translate(-50%,-50%)";
-document.getElementById("eye-div-in2").style.top ="62%";
-document.getElementById("eye-div-in2").style.transform ="translate(-50%,-50%)";}
-
-
-
-
-if (text.indexOf('centre') > -1 ||
-      text.indexOf('middle') > -1
-    ) {
-                  document.getElementById("eye-div-in").style.top ="50%";
-document.getElementById("eye-div-in").style.transform ="translate(-50%,-50%)";
-document.getElementById("eye-div-in2").style.top ="50%";
-document.getElementById("eye-div-in2").style.transform ="translate(-50%,-50%)";}
-
-if (text.indexOf('center') > -1) {
-               document.getElementById("eye-div-in").style.top ="50%";
-document.getElementById("eye-div-in").style.transform ="translate(-50%,-50%)";
-document.getElementById("eye-div-in2").style.top ="50%";
-document.getElementById("eye-div-in2").style.transform ="translate(-50%,-50%)";}
-
-
+          
+          
+          
 
 if (text.indexOf('time') > -1)  {
        
