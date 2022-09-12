@@ -13,7 +13,7 @@
 	<div id="taareek"></div>
 	<div id="mahina"></div>
 	<div id="saal"></div>
-<button id="speak" onclick="get()">Speak</button>	 
+<button>Speak</button>	 
 <div class="container">
 <div class="texts"></div>
 </div>
@@ -44,7 +44,7 @@
 
 <div id="main-div">
 	<div class="row">
-			<div id="first"><img src="robot.gif"></div>
+			<div id="first"><img src="robot.gif" id="robo-img"></div>
 			<div id="second">
 			 <h1>Hi! I am Boron</h1>	
 			 <p>I am actually a example of an A.I. You can simply talk with me like a human. Also you can give me commands. Try it for free.</p>
@@ -53,7 +53,7 @@
 	</div>
 	
 <footer>
-<p>Made with ❤ by Ashutosh Pandey.</p>
+<p>Made with <button id="speak" onclick="get()">❤</button> by Ashutosh Pandey.</p>
 </footer>
 </div>
 
@@ -125,7 +125,6 @@ utterance.rate = 0.9;
 utterance.volume = 1;
 utterance.pitch = 0.5;
 utterance.lang = "en-IN"; 		
-document.getElementsByTagName("footer")[0].onclick = nut.click();	
 function get(){
 window.speechSynthesis.speak(utterance);				
 }
@@ -182,6 +181,16 @@ recognition.addEventListener("result", (e) => {
        					
       utterance.text = "Your qualification is" + uquaal;    
       nut.click();}
+      
+   
+   
+   if (text.indexOf('rotate') > -1 ||
+      text.indexOf('Rotate') > -1
+    ) {
+       					
+      utterance.text = "Ok, rotating yourself";    
+      nut.click();   document.getElementById("robo-img").style.transform ="rotateZ(360deg)";
+      }
       
       
   

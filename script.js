@@ -9,7 +9,6 @@ document.getElementById("form-div").style.display ="flex";
 }		
 }
 
-
 document.getElementsByTagName("form")[0].onsubmit = function(){
 var x = document.getElementById("uname");
 var y = document.getElementById("uemail");
